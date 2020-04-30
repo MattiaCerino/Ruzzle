@@ -16,6 +16,8 @@ import javafx.beans.property.StringProperty;
 public class Board {
 	private List<Pos> positions;
 	private Map<Pos, StringProperty> cells;
+	// possiamo fare in modo che il bottone sia direttamente collegato con il valore della StringProperty con il binding => ogni volta
+	// che questo carattere nella StringProperty cambia, il cambiamento si riflettere sul bottone dell'interfaccia
 
 	private int size;
 
@@ -56,7 +58,7 @@ public class Board {
 	}
 
 	/**
-	 * Restituisce la lista di oggetti {@link  Pos} che corrispondono alle posizioni lecite sulla scacchiera. Gli elementi sono ordinati per righe.
+	 * Restituisce la lista di oggetti {@link Pos} che corrispondono alle posizioni lecite sulla scacchiera. Gli elementi sono ordinati per righe.
 	 * @return
 	 */
 	public List<Pos> getPositions() {
@@ -70,7 +72,7 @@ public class Board {
 		for(Pos p: this.positions) {
 			int random = (int)(Math.random()*26) ;
 			String letter = Character.toString((char)('A'+random)) ;
-			this.cells.get(p).set(letter); 
+			this.cells.get(p).set(letter);	// grazie al binding questa set si riflette direttamente sul bottone
 		}
 	}
 	
